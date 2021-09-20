@@ -8,4 +8,4 @@ I am learning how I can make some art in JavaScript 💛 - Pictures below, code 
 
 ## Rectangles in night mode 🌃
 
-![rectangles night](/images/rectanglesNight/rectanglesNight.gif)
+![rectangles night](/images/rectanglesNight.gif)
