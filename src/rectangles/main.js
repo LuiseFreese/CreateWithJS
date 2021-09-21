@@ -1,30 +1,47 @@
-let canvas = document.querySelector('canvas');
-let context = canvas.getContext('2d');
+const canvasSketch = require("canvas-sketch");
 
-//random colors function
+const settings = {
+  dimensions: [1080, 1080],
+};
+// random colors function
 const randomHex = () =>
   `#${Math.floor(Math.random() * 0xffffff)
     .toString(16)
-    .padEnd(6, '0')}`;
+    .padEnd(6, "0")}`;
 
-const width = 100;
-const height = 100;
-const gap = 20;
-let x, y;
+const sketch = () => {
+  return ({ context, width, height }) => {
+    context.fillStyle = "black";
+    context.fillRect(0, 0, width, height);
+    context.lineWidth = width * 0.01;
 
-for (let i = 0; i < 8; i++) {
-  for (let j = 0; j < 8; j++) {
-    let x = 180 + (width + gap) * i;
-    let y = 100 + (height + gap) * j;
+    const w = width * 0.1;
+    const h = height * 0.1;
+    const gap = width * 0.03;
+    let ix = width * 0.17;
+    let iy = height * 0.17;
 
-    context.beginPath();
-    context.rect(x, y, width, height);
-    context.stroke();
-    context.strokeStyle = randomHex();
-    if (Math.random() < 0.5) {
-      context.beginPath();
-      context.rect(x + 20, y + 20, width - 40, height - 40);
-      context.stroke();
+    const off = width * 0.06;
+    let x, y;
+
+    for (let i = 0; i < 5; i++) {
+      for (let j = 0; j < 5; j++) {
+        x = ix + (w + gap) * i;
+        y = iy + (h + gap) * j;
+
+        context.beginPath();
+        context.rect(x, y, w, h);
+        context.stroke();
+        context.strokeStyle = randomHex();
+
+        if (Math.random() > 0.5) {
+          context.beginPath();
+          context.rect(x + off / 2, y + off / 2, w - off, h - off);
+          context.stroke();
+        }
+      }
     }
-  }
-}
+  };
+};
+
+canvasSketch(sketch, settings);
