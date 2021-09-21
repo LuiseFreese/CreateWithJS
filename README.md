@@ -14,4 +14,4 @@ For a second version, I randomized the color for each rectangle and set a black 
 
 and even refactored :-)
 
-![refactored nightmode rectangles](/images/rectangleNightmodeRefactored)
+![refactored nightmode rectangles](/images/rectangleNightmodeRefactored.gif)
